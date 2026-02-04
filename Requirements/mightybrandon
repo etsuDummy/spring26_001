@@ -1,0 +1,12 @@
+Animal Shelter Simulator game
+
+1   must be able to track animals in shelter
+2   must be able to track resources such as food and bedding
+3   must be able to track adoption requests / applications
+4   must allow player to match animals to adopters
+5   must have graphical interface
+6   must have keyboard or button-based controls
+7   game should display current score
+8   must implement scoreboard that is persistent between plays
+9   game will support single-player operations
+10  must have end-state, such as when player manually quits or fails 
