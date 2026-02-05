@@ -1,0 +1,11 @@
+Re creating Flappy Bird
+1. Must have a game start screen 
+2. Must have endless side scrolling 
+3. Must be able to keep score 
+4. Must have collision detection 
+5. Must have an "end game" screen
+6. Must be able to frequently create obstacles
+7. Must be able to tap the screen to move vertically 
+8. The objects created must be green pipes 
+9. Must have some sort gravity that pulls the bird down 
+10. Must have sound effects that match the game 
