@@ -1,0 +1,10 @@
+1. The game must have movement, forward, backward, left, and right. Movement is in a one grid motion.
+2. The game must have a road way obstacle with moving vehicles for the player to dodge.
+3. The game must have a river in which the player must jump on moving obstacles to dodge the water.
+4. The game must have "checkpoints." The checkpoints are just long grid strips with no obstacles.
+5. The game must have a timer to track the current duration of the round.
+6. The game must have name logging at the end for leaderboards.
+7. The game must have an infinite number of runs so the player can build up a high score.
+8. The game must have 3 lives, if they hit an obstacle they lose a life.
+9. The game must have powerups such as quicker movement (2 grids at a time), frozen obstacles...
+10. The game must be 3D.
