@@ -1,0 +1,40 @@
+Group Members: Cooper Bowman, Lucien Verdun, Ashley Andrade
+Architectural Design: (Scaffolding for the entire solution)
+  * Console Application via Visual Studio framework
+
+
+High Level Design: (System/Application design and APIs)
+  * Out of Scope 
+
+
+Mid Level Design: (Subsystem and services design)
+  * modules needed: 
+     * UserInput ( takes in two numbers from console ) 
+     * Normalizer ( normalizes numbers to integers )
+     * DigitRootSum ( takes in a number 
+     * Add ( adds two numbers, outputs sum/number)
+     * Main ( Runs all programs, contains startup program information to be printed to console. )
+* The UserInput is run so that Add has two numbers to sum and then Add’s output is routed to DigitRootSum
+
+
+Detailed Design: (Class/Method design)
+User Input:
+* readValue: prompts user for a number, reads line, returns raw string
+* getValues: calls readValue twice, validates input is only numbers and allowed characters, returns both raw stringA and stringB
+
+Normalizer:
+* normalizeToDigits: trims whitespace, handles optional leading +/-, removes decimal point if present, rejects illegal characters, returns digit-only strings in variables num1 and num2
+
+Add: sums num1 and num2 and returns numSum
+* need to discuss best data type, maybe long
+
+DigitRootSum:
+* Base case: if n < 10, return int n
+* numSum will then be % by 10 to give the LCD by itself
+* LCD will be added to remainingNum( numSum / 10) giving the variable DigitSum
+* DigitRootSum will then be called again with DigitSum as the input.
+* end condition is when n is a single digit, satisfying the base case
+
+
+ Main:
+* Will print startup information and handle running of other methods

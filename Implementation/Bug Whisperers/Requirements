@@ -1,0 +1,38 @@
+Requirements
+
+R1: 	The solution MUST accept two base-10 numeric values from a human user.
+R1.1: 	The solution MUST prompt the user for each input value.
+R1.2: 	The solution MUST treat leading/trailing whitespace as ignorable during input parsing.
+R1.3:	The solution MUST accept inputs containing an optional leading sign (+ or -).
+R1.4:	If a value contains a decimal point, the solution MUST remove the decimal point before performing digit reduction.
+R1.5:	If a decimal point is removed, the solution MUST treat the remaining characters as digits for reduction.
+
+R2: 	The solution MUST validate user input before performing calculations.
+R2.1: 	The solution MUST reject input containing characters other than digits, at most one decimal point, optional leading sign, and whitespace.
+R2.2: 	If an input is invalid, the solution MUST display an error message.
+R2.3: 	If input in invalid, the solution MUST allow the user to retry.
+
+R3: 	The solution MUST normalize input into a digit-only representation prior to addition.
+R3.1:	The solution MUST remove any decimal point, per R1.4.
+R3.2:	The solution MUST remove any leading sign character prior to digit reduction.
+R3.3:	The solution MUST interpret an input of all zeros as zero.
+
+R4: 	The solution MUST add the two normalized values into a single total sum.
+R4.1:	The solution MUST compute the total using integer arithmetic on the normalized values
+
+R5:	The solution MUST reduce the total sum to a single digit by repeatedly adding the least significant digit to the remaining higher order digits until one digit remains.
+R5.1:	The solution MUST implement the reduction process using recursion.
+R5.2: 	The solution MUST interpret "least significant digit" as the rightmost digit of the normalized base 10 interger value.
+R5.3:	The solution MUST define a base case where the value is a single digit (0-9).
+R5.4: 	The solution MUST recurse towards the base case.
+R5.5: 	The solution MUST continue reduction until the current value is the base case.
+R5.6: 	The solution MAY display intermediate reduction steps to the user.
+
+R6: 	The solution MUST output the final single-digit result to the user.
+R6.1: 	The solution MUST output the final single-digit result as a base 10 digit (0-9).
+
+R7:	The solution MUST handle calculation-related error conditions.
+R7.1:	If overflow occurs during normalization oraddition, the solution MUST display an error message.
+R7.2:	If overflow occurs, the solution MUST terminate gracefully.
+
+R8: 	The solution MAY log error conditions.
