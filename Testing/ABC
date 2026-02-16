@@ -1,0 +1,92 @@
+Brandon Garrison 
+Cayleigh Shaw 
+Ava Valente 
+
+Test Cases for Missile Game 
+
+Shooting the missile (right click happy path) 
+Precondition: Player runs the solution (starts the game) 
+Action: User clicks the right mouse button  
+Postcondition: Missile is launched  
+
+Shooting the missile (space bar happy path) 
+Precondition: Player runs the solution (starts the game) 
+Action: User clicks the spacebar  
+Postcondition: Missile is launched 
+
+Shooting the missile (right click unhappy path) 
+Precondition: Player runs the solution (starts the game) 
+Action: User clicks the right mouse button  
+Postcondition: Error, missile is not launched  
+
+Shooting the missile (spacebar unhappy path) 
+Precondition: Player runs the solution (starts the game) 
+Action: User clicks the spacebar  
+Postcondition: Error, missile is not launched  
+
+
+Missile colliding with ship (happy path) 
+Precondition: Missile successfully launches 
+Action: Missile hits a ship   
+Postcondition: Ship blows up, missile and ship removed from screen 
+
+Missile colliding with ship (unhappy path) 
+Precondition: Missile successfully launches 
+Action: Missile hits a ship   
+Postcondition: Error, solution does not display an explosion 
+
+Missile colliding with ship (unhappy path) 
+Precondition: Missile successfully launches 
+Action: Missile hits a ship   
+Postcondition: Error, solution does not remove missile and ship from screen 
+
+Missile colliding with ship (unhappy path) 
+Precondition: Missile successfully launches 
+Action: Missile appears to collide with a ship   
+Postcondition: Error, solution does not detect the ship, missile goes through it 
+
+Missile colliding with ship (unhappy path) 
+Precondition: Missile successfully launches 
+Action: Missile hits a ship   
+Postcondition: Error, solution does not remove ship from screen but removes missile, or vice versa 
+
+
+End game (happy path) 
+Precondition: Solution is running 
+Action: User is idle for 5 minutes   
+Postcondition: Solution ends the game   
+
+End game (happy path) 
+Precondition: Solution is running 
+Action: User clicks left mouse button   
+Postcondition: Solution ends the game   
+
+End game (happy path) 
+Precondition: Solution is running 
+Action: User presses esc button   
+Postcondition: Solution ends the game  
+
+End game (happy path) 
+Precondition: Solution is running 
+Action: "hit” count reaches 10 
+Postcondition: Solution  ends the game 
+
+End game (unhappy path) 
+Precondition: Solution is running 
+Action: User is idle for 5 minutes   
+Postcondition: Solution does not end the game 
+
+End game (unhappy path) 
+Precondition: Solution is running 
+Action: User clicks left mouse button 
+Postcondition: Solution does not end the game  
+
+End game (unhappy path) 
+Precondition: Solution is running 
+Action: User presses esc button 
+Postcondition: Solution does not end the game 
+
+End game (unhappy path) 
+Precondition: Solution is running 
+Action: “hit” count reaches 10 
+Postcondition: Solution does not end the game 
