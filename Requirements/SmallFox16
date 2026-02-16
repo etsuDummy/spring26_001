@@ -4,50 +4,85 @@
 // Tried my best to follow SMART criteria
 // made these requirements by: first, I manually made the first 28. then I gave the list to AI and asked it where my blindspots were (simulating proofreading, or having a coworker look at my work) it had some good suggestions and I wrote the remainder of the requirements from those.
 //
-1. The Solution contains a snake, which begins asleep. -- OPTIONAL
-2. The solution is a single player game. -- MANDATORY
-3. snake wakes up when the player clicks it. -- OPTIONAL
-4. The solutions uses the arrow keys to move: (relative to the player and the screen, not realtive to the snakes perceived POV) -- MANDATORY
-5. The solution uses this color pattern: snake = green, background= dark grey, food = yellow -- OPTIONAL
-6. the solution just begins the game on run. -- MANDATORY
-7. game loses and exits if snake ever recontacts itself --MANDATORY
-8. game wins if snake fills whole screen -- MANDATORY
-9. the snake grows a finite set amount each time the snake contacts (eats) food on the screen. --MANDATORY
-10. snake game must have a hard set window size, 640x480 -- OPTIONAL
-11. On wake up, snake shakes a little, then begins moving forward, beginning the game -- OPTIONAL
-12. On game win, show a victory screen then exit --OPTIONAL
-13. On game loss, show loss screen then exit --OPTIONAL
-14. The solution must be a console app -- MANDATORY
-15. The solution must be winnable -- MANDATORY
-16. Snake body follows exact path of snake head -- MANDATORY
-17. Snake body growth always happens at the rear-most part of the snake. -- MANDATORY
-18. the solution must handle non arrowkey keystrokes by doing nothing. -- MANDATORY
-19. The snake spawns in the corner of the grid, facing up. -- MANDATORY
-20. Food spawns at a random unoccupied cell (not on the snake, not on other food). Random selection must be uniformly distributed across all eligible cells. -- MANDATORY
-21. The snake's initial length is 5 tiles. -- MANDATORY
-22. The snake head has a distinct sprite/visual that differentiates it from the body segments. Body segments are plain green tiles; the head has a unique appearance (e.g., eyes, different shade, directional indicator). -- OPTIONAL
-23. The grid is tile-based. Cell size is 20x20 pixels, giving a 32x24 grid (768 total cells) at the 640x480 window size. -- MANDATORY
-24. The snake moves continuously at a "current" tick rate. Movement is automatic and constant; the snake does not wait for input to advance. -- MANDATORY
-25. The snake gets gradually faster as it grows longer. Speed increase must have a floor (minimum tick interval) so the game remains playable. -- MANDATORY
-26. Pressing the arrow key opposite to the snake's current direction (e.g., Down while moving Up) is silently ignored. The snake must not be able to reverse directly into itself. -- MANDATORY
-27. The game buffers at most 1 pending direction change between ticks. If multiple keys are pressed between ticks, only the first valid one is kept. -- MANDATORY
-28. Game loses and exits if the snake's head moves outside the grid boundary (hits a wall). The snake does NOT wrap around screen edges. -- MANDATORY
-29. Exactly 2 food items are on the grid at all times. When one is eaten, a replacement spawns immediately. Exception: if only 1 empty cell remains, only 1 food exists. -- MANDATORY
-30. The snake grows by exactly 1 tile per food eaten. -- MANDATORY
-31. Growth is applied on the same tick the food is eaten (tail does not retract that tick). -- MANDATORY
-32. Collision detection (self and wall) is checked AFTER the snake moves each tick. -- MANDATORY
-33. A score is displayed on screen during gameplay (e.g., count of food eaten or snake length). -- OPTIONAL
-34. Win and loss screens wait for any keypress before the application exits. -- OPTIONAL
-35. The terminal cursor must be hidden during gameplay. -- OPTIONAL
-36. The initial 2 food items spawn when gameplay begins (after wake-up if wake-up is implemented, otherwise on run). -- MANDATORY
-37. The snake body is stored as an ordered list of cell coordinates. Each tick, the new head position is prepended; if no growth, the tail is removed. -- MANDATORY
-38. The application exits with return code 0 on both win and loss. -- OPTIONAL
-39. The solution must be written in C#. -- MANDATORY
-40. The starting tick rate is slow and beginner-friendly: approximately 5 ticks per second (200ms per tick). Speed increases gradually — every 30 cells of growth, the tick interval decreases by 10ms. Minimum tick interval floor is 80ms (12.5 ticks/sec). -- MANDATORY
-41. The grid boundary IS the window edge. There is no separately drawn border/wall graphic. The window itself is the boundary, and its size is locked by the program so it cannot be resized. -- MANDATORY
-42. Only changed cells are redrawn each tick (dirty-cell rendering). The entire grid is NOT re-rendered every frame. -- MANDATORY
-43. The wake-up click (requirement 3) must land on one of the snake's occupied cells to trigger. Clicks elsewhere are ignored. -- OPTIONAL
-44. There is no pause feature. The game runs continuously from wake-up until win or loss. -- MANDATORY
-45. Console character representation: body segments = solid block character (█), food = a distinct character (e.g., ● or ◆), empty cells = space. Head rendering should approximate a rounded, wider shape using appropriate characters or character combinations. -- OPTIONAL
-46. The score display area must not reduce the playable grid size. If placed above/below the grid, the window accounts for the extra row(s). -- MANDATORY
-47. Mouse input is only used for the wake-up click (requirement 3). During gameplay, mouse input is ignored entirely. -- OPTIONAL
+// WakeySnakey Game // // I approached this as if I was going to take this to a design phase, spoiler alert, I am. I am going to take this game through every stage of the SDLC, as we learn about them through class. Since we just learned about design, I am going to model the game this week, and show you, and then take it to every other step as we go. // Tried my best to follow SMART criteria. // Made these requirements by: first, I manually made the first 28. Then I gave the list to AI and asked it where my blind spots were (simulating proofreading, or having a coworker look at my work). It had some good suggestions and I wrote the remainder of the requirements from those.
+
+── General / Platform ──
+
+1. The solution is a single player game. -- MANDATORY
+2. The solution just begins the game on run. -- MANDATORY
+3. The solution must be a console app. -- MANDATORY
+4. The solution must be written in C#. -- MANDATORY
+5. There is no pause feature. The game runs continuously from wake-up until win or loss. -- MANDATORY
+── Window & Grid ── 
+
+6. Snake game must have a hard set window size, 640×480. -- OPTIONAL 
+7. The grid is tile-based. Cell size is 20×20 pixels, giving a 32×24 grid (768 total cells) at the 640×480 window size. -- MANDATORY
+8. The grid boundary IS the window edge. There is no separately drawn border/wall graphic. The window itself is the boundary, and its size is locked by the program so it cannot be resized. -- MANDATORY
+
+── Snake Spawning & Structure ── 
+
+9. The snake spawns in the corner of the grid, facing up. -- MANDATORY 
+10. The snake's initial length is 5 tiles. -- MANDATORY 
+11. The snake body is stored as an ordered list of cell coordinates. Each tick, the new head position is prepended; if no growth, the tail is removed. -- MANDATORY 
+12. Snake body follows exact path of snake head. -- MANDATORY
+
+── Snake Movement & Speed ── 
+
+13. The snake moves continuously at a "current" tick rate. Movement is automatic and constant; the snake does not wait for input to advance. -- MANDATORY 
+14. The starting tick rate is slow and beginner-friendly: approximately 5 ticks per second (200ms per tick). Speed increases gradually — every 30 cells of growth, the tick interval decreases by 10ms. Minimum tick interval floor is 80ms (12.5 ticks/sec). -- MANDATORY 
+15. The snake gets gradually faster as it grows longer. Speed increase must have a floor (minimum tick interval) so the game remains playable. -- MANDATORY
+
+── Input Handling ── 
+
+16. The solution uses the arrow keys to move (relative to the player and the screen, not relative to the snake's perceived POV). -- MANDATORY 
+17. Pressing the arrow key opposite to the snake's current direction (e.g., Down while moving Up) is silently ignored. The snake must not be able to reverse directly into itself. -- MANDATORY 
+18. The game buffers at most 1 pending direction change between ticks. If multiple keys are pressed between ticks, only the first valid one is kept. -- MANDATORY 
+19. The solution must handle non-arrow-key keystrokes by doing nothing. -- MANDATORY
+
+── Food ── 
+
+20. Food spawns at a random unoccupied cell (not on the snake, not on other food). Random selection must be uniformly distributed across all eligible cells. -- MANDATORY 
+21. Exactly 2 food items are on the grid at all times. When one is eaten, a replacement spawns immediately. Exception: if only 1 empty cell remains, only 1 food exists. -- MANDATORY 
+22. The initial 2 food items spawn when gameplay begins (after wake-up if wake-up is implemented, otherwise on run). -- MANDATORY
+
+── Growth & Eating ── 
+
+23. The snake grows a finite set amount each time the snake contacts (eats) food on the screen. -- MANDATORY 
+24. The snake grows by exactly 1 tile per food eaten. -- MANDATORY 25. Growth is applied on the same tick the food is eaten (tail does not retract that tick). -- MANDATORY 
+26. Snake body growth always happens at the rear-most part of the snake. -- MANDATORY
+
+── Collision & Boundaries ── 
+
+27. Collision detection (self and wall) is checked AFTER the snake moves each tick. -- MANDATORY 
+28. Game loses and exits if the snake's head enters a cell currently occupied by any body segment. -- MANDATORY 
+29. Game loses and exits if the snake's head moves outside the grid boundary (hits a wall). The snake does NOT wrap around screen edges. -- MANDATORY
+
+── Win / Loss / Scoring ── 
+
+30. Game wins if snake eats 20 "food". -- MANDATORY 
+31. The solution must be winnable. -- MANDATORY 
+32. On game win, show a victory screen then exit. -- OPTIONAL 
+33. On game loss, show loss screen then exit. -- OPTIONAL 
+34. The score is displayed on the win/loss screen before the application exits. -- OPTIONAL 
+35. Win and loss screens wait for any keypress before the application exits. -- OPTIONAL 
+36. The score is 100 for each "food" eaten, and 50 for each second survived. -- OPTIONAL 
+37. The application exits with return code 0 on both win and loss. -- OPTIONAL
+
+── Visual / Rendering ── 
+
+38. The solution uses this color pattern: snake = green, background = dark grey, food = yellow. -- OPTIONAL 
+39. The snake head has a distinct sprite/visual that differentiates it from the body segments. Body segments are plain green tiles; the head has a unique appearance (e.g., eyes, different shade, directional indicator). -- OPTIONAL 
+40. The terminal cursor must be hidden during gameplay. -- OPTIONAL 
+41. Only changed cells are redrawn each tick (dirty-cell rendering). The entire grid is NOT re-rendered every frame. -- MANDATORY 
+42. Console character representation: body segments = solid block character (█), food = a distinct character (e.g., ● or ◆), empty cells = space. Head rendering should approximate a rounded, wider shape using appropriate characters or character combinations. -- OPTIONAL
+
+── Wake-Up Sequence (Optional Feature Set) ── 
+
+43. The solution contains a snake, which begins asleep. -- OPTIONAL 
+44. Snake wakes up when the player clicks it. -- OPTIONAL 
+45. On wake up, snake shakes a little, then begins moving forward, beginning the game. -- OPTIONAL 
+46. The wake-up click (requirement 44) must land on one of the snake's occupied cells to trigger. Clicks elsewhere are ignored. -- OPTIONAL 
+47. Mouse input is only used for the wake-up click (requirement 44). During gameplay, mouse input is ignored entirely. -- OPTIONAL
+
+
+
