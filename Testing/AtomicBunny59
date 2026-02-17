@@ -1,0 +1,56 @@
+Mohamed K. Gavin G.
+
+Launching Missile on Button / Key Press
+  	Precondition : The solution must launch a missile when the user clicks right mouse button
+  	Action : The user clicks the right mouse button
+  	Postcondition : The game should launch a missile
+  
+  	Precondition : The solution must launch a missile when the user clicks space bar
+  	Action : The user clicks the space bar
+  	Postcondition : The game should launch a missile
+  
+  	Precondition : The solution must launch a missile when the user clicks right mouse button
+  	Action : The user clicks the left mouse button
+  	Postcondition : The game should launch a missile
+	
+Checking Active Missile Count
+  	Precondition : The solution must launch a missile when the user clicks right mouse button but no more than 5 missiles.
+  	Action : The user clicks the right mouse while theres 4 active missiles
+  	Postcondition : The game should launch a missile
+  
+  	Precondition : The solution must launch a missile when the user clicks right mouse button but no more than 5 missiles.
+  	Action : The user clicks the right mouse while theres 5 active missiles
+  	Postcondition : The game should not launch a missile
+
+Making Sure Missiles Move Vertically
+  	Precondition : The solution must launch a missile vertically. From the bottom of the screen to the top.
+  	Action : The missile should move from the bottom of the screen to the top.
+  	Postcondition : The missile goes from the bottom to the top of the screen.
+
+Remove the Missile if it Goes off Screen
+  	Precondition : If the missile doesnt hit a ship or other object, and goes out of bounds.
+  	Action : The missile should be removed from the active missile count.
+  	Postcondition : Decrement the missile count
+  	
+  	Precondition : If the missile doesnt hit a ship or other object.
+  	Action : The missile should move out of bounds.
+  	Postcondition : If the missile doesnt go out of bounds dont decrement the missile count.
+  	
+  The Missile Speed Should Remain Constant
+  	Precondition : The missile speed should be constant.
+  	Action : Measure the speed of the missile.
+  	Postcondition : Make sure all missile move at the same speed.
+	
+The Missile Should Detect When It Hits a Ship
+  	Precondition : The missile collides with the ship
+  	Action : Display an explosion.
+  	Postcondition : The ship disappears and displays an explosion.
+  	
+  	Precondition : The missile doesnt hit a ship.
+  	Action : There is no explosion.
+  	Postcondition : The missile count decrements after it goes off screen.
+  	
+  The Solution Keeps a Count of All Hits
+  	Precondition : If a missile kills a ship.
+  	Action : The Hit Count Increases
+  	Postcondition : The Hit Count should be higher than previosly.
