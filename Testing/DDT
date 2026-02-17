@@ -1,0 +1,58 @@
+
+TESTING/<DAVID OYANIBI, DERICK EMODI, THOMAS WISE>
+BATTLESHIP TESTCASE
+
+
+1A. Precondition: Game running and the user has missiles
+    Action: User right-clicks a space on the game board
+          	
+    Postcondition: Missile is fired at the desired space
+
+1B. Precondition: Game running and the user has a missile
+    Action: User clicks the space bar on the desired space on the board
+    Postcondition: Missile is fired at the desired space.
+
+    Precondition: Game running and the user has a missile
+    Action: User clicks on a key that isn't the space bar or the right-click.
+    Postcondition: Missile is not fired.
+
+1C. Precondition: 5 active missiles in the game
+    Action: User fires a new missile
+    Postcondition: Oldest missile is removed and replaced with a new one.
+
+1D. Precondition: User has a minimum one active missile
+    Action: Missile is fired off-screen
+    Postcondition: Missile fired off-screen is made inactive
+
+1E. Precondition: User has 2 missiles
+    Action: User fires both missiles, on at a time, to the same spot
+    Postcondition: Travel time for both missiles are equal
+
+1F. Precondition: user has an active missile
+    Action: User fires missile
+    Postcondition: missile appears from the center-bottom screen.
+
+1G. Precondition: User has an active missile
+   Action: User fires missiles at the game board
+   Postcondition: Missile travels vertically onto the game board
+
+1H. Precondition: the user has an active missile and an enemy ship on the game board
+    Action: user fires a missile at the enemy ship
+    Postcondition: If a missile hits a ship, register the ship as hit.
+
+    Precondition: User has an active missile
+    Action: User fires missiles at space where the enemy ship is not present
+    Postcondition: the enemy ship is not hit, and the missile is no longer active.
+
+1I. Precondition: The user has a missile, and an enemy is on the board.
+    Action: User fires a missile at the enemy ship.
+    Postcondition: when a missile hits the ship, an explosion occurs in space.
+
+1J. Precondition: The user has a missile, and the enemy is on board.
+    Action: User fires missile at enemy ship
+    Postcondition: When ship is hit, missile is no longer active and ship is destroyed.
+
+1K. Precondition: The user does not have any hits, and has active missiles.
+    Action: user hits enemy ship with missile
+    Postcondition: user hits counter increment
+    
