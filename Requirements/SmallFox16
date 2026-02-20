@@ -21,7 +21,7 @@
 
 ── Snake Spawning & Structure ── 
 
-9. The snake spawns in the corner of the grid, facing up. -- MANDATORY 
+9. The snake spawns in the bottom right corner of the grid, facing up. -- MANDATORY 
 10. The snake's initial length is 5 tiles. -- MANDATORY 
 11. The snake body is stored as an ordered list of cell coordinates. Each tick, the new head position is prepended; if no growth, the tail is removed. -- MANDATORY 
 12. Snake body follows exact path of snake head. -- MANDATORY
