@@ -1,0 +1,109 @@
+DESIGN NOTES
+
+
+Problem 2: String Character Analysis — Design
+Module Breakdown
+Module 1: File Input Module
+
+Prompts the user for a file path
+Validates that the file exists and is accessible
+Reads the entire file contents into a single string
+Re-prompts on invalid file path
+
+Module 2: Character Counting Module
+
+Receives the string from the File Input Module
+Initializes an array of 256 elements (one per extended ASCII character) to zero
+Iterates through each character of the string
+Increments the corresponding array index for each character encountered
+
+Module 3: Top Three Analysis Module
+
+Receives the populated count array from the Character Counting Module
+Scans the array to find the three highest values
+Handles ties by selecting the lower ASCII value first
+Returns the three characters and their counts
+
+Module 4: Undetected Count Module
+
+Receives the populated count array from the Character Counting Module
+Counts how many elements in the array remain at zero
+Returns the total count of undetected characters
+
+Module 5: String Reversal Module
+
+Receives the original string from the File Input Module
+Reverses the string character by character
+Returns the reversed string
+
+Module 6: Output Module
+
+Receives data from the Top Three, Undetected Count, and String Reversal Modules
+Displays the top three characters and their counts
+Displays the number of undetected ASCII characters
+Displays the reversed string
+
+Data Flow
+File Path → File Input Module → Character Counting Module → Top Three Analysis Module ─┐
+                  │                        │                                            │
+                  │                        └──→ Undetected Count Module ────────────────┤
+                  │                                                                     │
+                  └──→ String Reversal Module ─────────────────────────────────────────→ Output Module → User
+Data Dictionary
+VariableTypeDescriptionfilePathStringPath to the input filefileStringStringEntire contents of the file as a single stringcountArrayInteger Array [256]Occurrence count for each extended ASCII charactertopThreeArray of 3 PairsThree characters with highest counts and their valuesundetectedCountIntegerNumber of ASCII characters with zero occurrencesreversedStringStringThe file string in reverse order
+Algorithm (Pseudocode)
+FUNCTION getFileInput()
+    PROMPT user for file path
+    VALIDATE file exists
+    READ entire file into fileString
+    RETURN fileString
+
+FUNCTION countCharacters(fileString)
+    INITIALIZE countArray[256] to all zeros
+    FOR each character in fileString
+        index = ASCII value of character
+        countArray[index] = countArray[index] + 1
+    END FOR
+    RETURN countArray
+
+FUNCTION findTopThree(countArray)
+    INITIALIZE topThree as empty array of 3 pairs
+    FOR i = 0 to 255
+        IF countArray[i] is greater than smallest value in topThree
+            REPLACE smallest entry with (character i, countArray[i])
+        END IF
+    END FOR
+    SORT topThree in descending order by count
+    RETURN topThree
+
+FUNCTION countUndetected(countArray)
+    undetectedCount = 0
+    FOR i = 0 to 255
+        IF countArray[i] equals 0
+            undetectedCount = undetectedCount + 1
+        END IF
+    END FOR
+    RETURN undetectedCount
+
+FUNCTION reverseString(fileString)
+    reversedString = ""
+    FOR i = length of fileString - 1 down to 0
+        APPEND fileString[i] to reversedString
+    END FOR
+    RETURN reversedString
+
+FUNCTION displayResults(topThree, undetectedCount, reversedString)
+    PRINT topThree characters and counts
+    PRINT undetectedCount
+    PRINT reversedString
+END FUNCTION
+
+MAIN
+    fileString = getFileInput()
+    countArray = countCharacters(fileString)
+    topThree = findTopThree(countArray)
+    undetected = countUndetected(countArray)
+    reversed = reverseString(fileString)
+    displayResults(topThree, undetected, reversed)
+END MAIN
+

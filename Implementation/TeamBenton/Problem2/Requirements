@@ -1,0 +1,26 @@
+PROBLEM 2 |
+Take in a string (from a file where the entire file is considered the string), compute the total number of occurrences of each character in the extended ASCII set. Print out the top three characters (with the most occurrences). Print out how many characters in the ASCII set you didn’t detect. Then print out the string in reverse order.
+
+Functional Requirements
+
+-The system shall display a prompt requesting the first integer from the user before any calculation begins. (Mandatory)
+-The system shall display a prompt requesting the second integer from the user before any calculation begins. (Mandatory)
+-The system shall calculate and store the sum of the two integers within 1 second of receiving both inputs. (Mandatory)
+-The system shall extract the least significant digit from the current number during each recursive call. (Mandatory)
+-The system shall add the extracted least significant digit to the remaining digits during each recursive call. (Mandatory)
+-The system shall use recursion as the sole method for performing the digit reduction process. (Mandatory)
+-The system shall terminate recursion when the current value is a single digit between 0 and 9. (Mandatory)
+-The system shall display the final single-digit result to the user within 1 second of completing recursion. (Mandatory)
+-The system shall display each intermediate value produced during each recursive step. (Optional)
+
+Input Requirements
+
+-The system shall accept only whole integer values between -2,147,483,648 and 2,147,483,647 as valid input. (Mandatory)
+-The system shall reject any input that contains non-numeric characters upon submission. (Mandatory)
+-The system shall convert any negative input to its absolute value before processing. (Optional)
+-The system shall accept zero as a valid input and process it through the recursive function. (Mandatory)
+
+Error Handling Requirements
+
+-The system shall display a descriptive error message within 1 second when invalid input is detected. (Mandatory)
+-The system shall re-prompt the user for input immediately after displaying an error message. (Optional)

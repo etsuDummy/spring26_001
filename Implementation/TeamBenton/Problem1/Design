@@ -1,0 +1,65 @@
+DESIGN
+
+
+
+Problem 1: Recursive Digit Reduction — Design
+Module Breakdown
+Module 1: Input Module
+
+Responsible for prompting the user for two integers
+Validates that each input is a whole integer within the defined range
+Converts negative values to absolute values if applicable
+Re-prompts on invalid input
+
+Module 2: Summation Module
+
+Receives two validated integers from the Input Module
+Computes and returns the sum of the two integers
+
+Module 3: Recursive Reduction Module
+
+Receives the sum from the Summation Module
+Base Case: If the number is a single digit (0–9), return the number
+Recursive Case: Extract the least significant digit using modulus (% 10), obtain remaining digits using integer division (/ 10), add them together, and call itself with the new value
+Returns the final single-digit result
+
+Module 4: Output Module
+
+Receives the final single-digit result from the Recursive Reduction Module
+Displays intermediate steps if enabled
+Displays the final result to the user
+
+Data Flow
+User Input → Input Module → Summation Module → Recursive Reduction Module → Output Module → User
+Data Dictionary
+VariableTypeDescriptionnum1IntegerFirst number entered by the usernum2IntegerSecond number entered by the usersumIntegerResult of adding num1 and num2currentNumIntegerThe number being processed in current recursive callleastDigitIntegerExtracted least significant digit (currentNum % 10)remainingIntegerRemaining digits after extraction (currentNum / 10)resultIntegerFinal single-digit answer
+Algorithm (Pseudocode)
+FUNCTION getInput()
+    PROMPT user for first integer
+    VALIDATE input
+    PROMPT user for second integer
+    VALIDATE input
+    RETURN num1, num2
+
+FUNCTION computeSum(num1, num2)
+    RETURN num1 + num2
+
+FUNCTION reduceNumber(currentNum)
+    IF currentNum is between 0 and 9
+        RETURN currentNum
+    END IF
+    leastDigit = currentNum MOD 10
+    remaining = currentNum / 10 (integer division)
+    newNum = remaining + leastDigit
+    RETURN reduceNumber(newNum)
+
+FUNCTION displayResult(result)
+    PRINT result
+END FUNCTION
+
+MAIN
+    num1, num2 = getInput()
+    sum = computeSum(num1, num2)
+    result = reduceNumber(sum)
+    displayResult(result)
+END MAIN

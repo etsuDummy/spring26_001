@@ -1,0 +1,36 @@
+PROBLEM 1 | 
+Using Recursion; take two numbers in from the user (a human) and add them together then separate the least significant digit and add it the remaining digits and so on until you have a single digit answer. 
+
+EX: 87345 => 8734+5= 8739 => 873+9 = 882 => 88 + 2 = 90 => 9+0 =9
+
+
+Functional Requirements
+
+-The system shall prompt the user to input a first integer number. (Mandatory)
+-The system shall prompt the user to input a second integer number. (Mandatory)
+-The system shall compute the sum of the two input numbers. (Mandatory)
+-The system shall separate the least significant digit from the remaining digits of the current number. (Mandatory)
+-The system shall add the least significant digit to the remaining digits. (Mandatory)
+-The system shall repeat the separation and addition process using recursion. (Mandatory)
+-The system shall stop recursion when the result is a single digit (0–9). (Mandatory)
+-The system shall display the final single-digit result to the user. (Mandatory)
+-The system shall display each intermediate step of the reduction process. (Optional)
+
+Input Requirements
+
+-The system shall accept only whole integer values as input. (Mandatory)
+-The system shall reject non-numeric input. (Mandatory)
+-The system shall handle negative numbers by using their absolute value. (Optional)
+-The system shall handle an input value of zero. (Mandatory)
+
+Performance Requirements
+
+-The system shall return the result within 2 seconds of receiving valid input. (Optional)
+
+Error Handling Requirements
+
+-The system shall display an error message when non-numeric input is entered. (Mandatory)
+-The system shall re-prompt the user after invalid input is detected. (Optional)
+
+
+
